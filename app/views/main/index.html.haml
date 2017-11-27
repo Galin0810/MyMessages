@@ -1,0 +1,24 @@
+%h1
+  News
+- @news.each do |news|
+  .news
+    Title:
+    = news.post
+    %br
+    Like:
+    = news.like
+    .comment
+      Comment
+      - @comment.comment.each do |comment|
+        %p 
+          Comment: 
+          = comment.title
+      = form_for :comments, url: comment_path(news.id) do |f|
+        Comment
+        = f.text_field :title
+        = f.submit
+= form_for :user_news, url: news_path do |f|
+  Title
+  = f.text_field :post
+  = f.submit
+  = f.check_box :like
