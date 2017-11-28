@@ -1,3 +1,17 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.comments{
+  width: 100%;
+  height: auto;
+  .comment{
+    .sub_comment{
+      height: 30px;
+      width: 200px;
+      margin-left: 20px;
+    }
+    .sub_comment_form{
+      margin-left: 60px;
+    }
+  }
+}

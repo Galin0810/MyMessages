@@ -7,12 +7,21 @@
     %br
     Like:
     = news.like
-    .comment
+    .comments
       Comment
       - @comment.comment.each do |comment|
-        %p 
+        .comment 
           Comment: 
           = comment.title
+          - comment.sub_comments.each do |sub_comment|
+            .sub_comment
+              Sub_comment:
+              = sub_comment.title
+          .sub_comment_form
+            = form_for :comments, url: sub_comments_path(comment.id) do |f|
+              Comment
+              = f.text_field :title
+              = f.submit
       = form_for :comments, url: comment_path(news.id) do |f|
         Comment
         = f.text_field :title
