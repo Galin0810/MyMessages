@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'user_list', to: 'user_list#user_list', as:'user_list'
   post 'comment/:id', to: 'comment#create', as:'comment'
   post '/friends/:friend_id', to: 'friends#create', as: 'friend'
+  delete '/friends/:friend_id/destroy', to: 'friends#destroy'
   
  
   root 'main#index'
