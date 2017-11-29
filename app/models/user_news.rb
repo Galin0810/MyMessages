@@ -1,7 +1,7 @@
 class UserNews
   include Mongoid::Document
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
  
 
   field :post, type: String

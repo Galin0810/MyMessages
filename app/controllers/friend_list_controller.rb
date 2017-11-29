@@ -1,22 +1,26 @@
 class FriendListController < ApplicationController
+  before_action :set_user, only:[:create, :destroy]
+  def create
+    @user= User.find(params[:id])
+    redirect_to root_path  
+  end
+
+  def destroy
+    @user= User.find(params[:id])
+    @user.destroy!
+    redirect_to root_path , :notice => "Your friend has been deleted"
+  end
   
-  def show
-    @friend_list = FriendList.find(params[:id])
-  end
+  private 
 
-  def show_all
-    @friend_list = FriendList.all
-  end
   
-  def add_friend
-   
-    redirect_to root_path
+  
+  def user_params
+      params.require(:user).permit(:name, :birthday, :sex, :email, :password)
   end
 
-  def destroy_friend_list
-    User.find(params[:id]).destroy
-    flash[:success] = "Friend deleted"
-    redirect_to friend_list_url
-  end
-
+  def set_user
+      @user = User.somehow_find_and_set_the_user(params[:id])
+   end
+  
 end

@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  resources :user_news, only: [:create, :edit, :update, :destroy]
+  resources :friend_list, only: [:create, :destroy]
   post 'user', to: 'main#create_user', as:'create'
-  post 'news', to: 'news#create'
+  post 'user_list', to: 'user_list#user_list', as:'user_list'
   post 'comment/:id', to: 'comment#create', as:'comment'
-  post 'comment/sub_comments/:id', to: 'comment#create_sub_comment', as:'sub_comments'
+  
  
   root 'main#index'
 end

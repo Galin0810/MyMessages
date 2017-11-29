@@ -1,9 +1,11 @@
 class MainController < ApplicationController
   def index
     @news = UserNews.all
+    @edit = UserNews.all
     @comment = Comment.all
     @user = User.all
-    @friend_list = FriendList.all
+    @friend_list = User.all
+    @user_list = User.all
   end
   
   def destroy_user

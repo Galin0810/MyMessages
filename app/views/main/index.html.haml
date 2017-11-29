@@ -4,6 +4,8 @@
   .news
     Title:
     = news.post
+    = link_to 'Edit', edit_user_news_path(news.id)
+    = link_to 'Delete', user_news_path(news.id), method: :delete
     %br
     Like:
     = news.like
@@ -13,20 +15,11 @@
         .comment 
           Comment: 
           = comment.title
-          - comment.sub_comments.each do |sub_comment|
-            .sub_comment
-              Sub_comment:
-              = sub_comment.title
-          .sub_comment_form
-            = form_for :comments, url: sub_comments_path(comment.id) do |f|
-              Comment
-              = f.text_field :title
-              = f.submit
       = form_for :comments, url: comment_path(news.id) do |f|
         Comment
         = f.text_field :title
         = f.submit
-= form_for :user_news, url: news_path do |f|
+= form_for :user_news, url: user_news_index_path do |f|
   Title
   = f.text_field :post
   = f.submit
