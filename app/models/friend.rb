@@ -1,3 +1,3 @@
-class FriendList
+class Friend
   include Mongoid::Document
 end
