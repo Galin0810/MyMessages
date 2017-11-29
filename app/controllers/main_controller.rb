@@ -4,7 +4,7 @@ class MainController < ApplicationController
     @edit = UserNews.all
     @comment = Comment.all
     @user = User.all
-    @friend_list = User.all
+    @friends = User.all
     @user_list = User.all
   end
   
