@@ -1,7 +1,7 @@
 class UserListController < ApplicationController
 
   def user_list
-    @user = User.all
+    @user = User.where(:id.ne =>current_user.id)
   end
 
   def destroy_user

@@ -1,9 +1,9 @@
 %h3
 User List
-- @user.each do |users|
+- @user.each do |user|
   .user
     Name Users:
-    = users.name
-    = link_to 'Add', friend_path(users.id), method: :post
-    = link_to 'Delete', friend_path(users.id), method: :delete
+    = user.name
+    = link_to 'Add', friend_path(user), method: :post if current_user.friends.is_friend? user.id
+    = link_to 'Delete', friend_path(user), method: :delete
       
