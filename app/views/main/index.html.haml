@@ -1,5 +1,10 @@
 %h1
   News
+= form_for :user_news, url: user_news_index_path do |f|
+  Title
+  = f.text_field :post
+  = f.submit
+  = f.check_box :like
 - @news.each do |news|
   %p
     .news
@@ -22,8 +27,3 @@
           = f.text_field :title
           = f.hidden_field :user_news_id, value: news.id
           = f.submit
-= form_for :user_news, url: user_news_index_path do |f|
-  Title
-  = f.text_field :post
-  = f.submit
-  = f.check_box :like

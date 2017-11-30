@@ -1,5 +1,5 @@
 class MainController < ApplicationController
   def index
-    @news = UserNews.all
+    @news = UserNews.order_by(created_at: :desc)
   end
 end
