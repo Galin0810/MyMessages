@@ -1,8 +1,0 @@
-%h1
-  Friends List
-  - @user.each do |user|
-    .user
-      Name Friend:
-      = users.name
-      = link_to 'Add', friend_path(user), method: :post, if current_user.friends.is_friend? user.id
-      = link_to 'Delete', friend_path(user), method: :delete

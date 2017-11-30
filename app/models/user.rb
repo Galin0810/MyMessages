@@ -5,6 +5,8 @@ class User
 
   has_and_belongs_to_many :messages
   has_many :friends
+  has_many :user_news
+  has_many :comments
  
 
   devise :database_authenticatable, :registerable,
@@ -43,6 +45,10 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
-  
 
+  def self.user_name(id)
+    self.each do |user|
+      return user.email
+    end
+  end
 end

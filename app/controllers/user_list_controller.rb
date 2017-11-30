@@ -1,10 +1,10 @@
 class UserListController < ApplicationController
 
-  def user_list
+  def index
     @user = User.where(:id.ne =>current_user.id)
   end
 
-  def destroy_user
+  def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url

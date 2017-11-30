@@ -1,0 +1,8 @@
+%h1
+  My news
+= form_for :user_news, user_news_index_path, mathod: :post
+- @news.each do |news|
+  %p
+    %h3
+      = news.title
+    = news.like

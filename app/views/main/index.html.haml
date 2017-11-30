@@ -1,24 +1,27 @@
 %h1
   News
 - @news.each do |news|
-  .news
-    Title:
-    = news.post
-    = link_to 'Edit', edit_user_news_path(news.id)
-    = link_to 'Delete', user_news_path(news.id), method: :delete
-    %br
-    Like:
-    = news.like
-    .comments
-      Comment
-      - @comment.comment.each do |comment|
-        .comment 
-          Comment: 
-          = comment.title
-      = form_for :comments, url: comment_path(news.id) do |f|
+  %p
+    .news
+      Title:
+      = news.post
+      = link_to 'Edit', edit_user_news_path(news.id)
+      = link_to 'Delete', user_news_path(news.id), method: :delete
+      %br
+      Like:
+      = news.like
+      .comments
         Comment
-        = f.text_field :title
-        = f.submit
+        - news.comments.each do |comment|
+          .comment 
+            = comment.user.name
+            %br
+            = comment.title
+        = form_for :comments, url: comment_path(news.id) do |f|
+          Comment
+          = f.text_field :title
+          = f.hidden_field :user_news_id, value: news.id
+          = f.submit
 = form_for :user_news, url: user_news_index_path do |f|
   Title
   = f.text_field :post
