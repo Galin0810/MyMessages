@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :user_news, only: [:index, :create, :edit, :update, :destroy]
   resources :user_list, only: [:index, :destroy]
  
-  # post 'user_list', to: 'user_list#user_list', as:'user_list'
+  
   post 'comment/:id', to: 'comment#create', as:'comment'
   post '/friends/:friend_id', to: 'friends#create', as: 'friend'
   delete '/friends/:friend_id', to: 'friends#destroy'

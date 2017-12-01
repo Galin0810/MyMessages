@@ -4,7 +4,7 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_and_belongs_to_many :messages
-  has_many :friends
+  has_and_belongs_to_many :friends
   has_many :user_news
   has_many :comments
  
@@ -46,9 +46,4 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  def self.user_name(id)
-    self.each do |user|
-      return user.email
-    end
-  end
 end

@@ -19,7 +19,7 @@ class UserNewsController < ApplicationController
   end
   
   def destroy
-    @news.destroy!
+    @news.destroy
     redirect_to root_path , :notice => "Your new has been deleted"
   end
   
@@ -30,6 +30,6 @@ class UserNewsController < ApplicationController
   end
 
   def set_news
-    @news = current_user.news.find(params[:id])
+    @news = current_user.user_news.find(params[:id])
   end
 end
