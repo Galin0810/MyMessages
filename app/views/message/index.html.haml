@@ -1,0 +1,13 @@
+%h1
+  Message
+= form_for :message, url: message_index_path do |f|
+  TExt
+  = f.text_field :texts
+  = f.hidden_field :user_news_id, value: news.id
+  = f.submit
+- @message.each do |message|
+  %p
+    .message
+      Title:
+      = message.texts
+      = link_to 'Delete', message_path(message.id), method: :delete

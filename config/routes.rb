@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   }
 
   resources :user_news, only: [:index, :create, :edit, :update, :destroy]
-  resources :user_list, only: [:index, :destroy]
+  resources :user_list, only: [:index, :create, :destroy]
+  resources :message, only: [:index, :destroy]
  
   
   post 'comment/:id', to: 'comment#create', as:'comment'
