@@ -4,7 +4,7 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   
-  has_and_belongs_to_many :friends
+  has_and_belongs_to_many :friend
   has_many :user_news
   has_many :comments
  
