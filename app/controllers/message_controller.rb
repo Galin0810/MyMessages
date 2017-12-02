@@ -6,7 +6,7 @@ class MessageController < ApplicationController
     end
   
     def create
-      friend.message.create(message_params)
+      # friend.message.create(message_params)
       redirect_to root_path
     end
   

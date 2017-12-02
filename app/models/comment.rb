@@ -6,8 +6,4 @@ class Comment
   belongs_to :user, optional: true
   
   field :title, type: String
-
-  def user_name
-    self.user.name
-  end
 end
