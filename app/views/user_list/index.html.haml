@@ -5,5 +5,5 @@ User List
     Name Users:
     = user.name
     = link_to 'Add', friend_path(user), method: :post if user.friend.include? @friends
-    = link_to 'Delete', friend_path(user), method: :delete 
+    = link_to 'Delete', friend_path(user), method: :delete if !user.friend.include? @friends
       
