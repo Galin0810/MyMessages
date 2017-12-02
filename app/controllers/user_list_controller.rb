@@ -2,7 +2,7 @@ class UserListController < ApplicationController
 
   def index
     @user = User.where(:id.ne =>current_user.id)
-    @friends = current_user.friend
+    @friends = current_user.friends
   end
 
   def destroy
