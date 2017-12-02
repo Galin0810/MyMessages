@@ -2,11 +2,11 @@ class MessageController < ApplicationController
   before_action :set_message, only:[:create , :destroy]
   
     def index
-      @message =Message.where(readed: false).count
+      @message = Message.where(readed: false).count
     end
   
     def create
-      current_user.message.create(message_params)
+      friend.message.create(message_params)
       redirect_to root_path
     end
   
@@ -21,7 +21,7 @@ class MessageController < ApplicationController
     private 
   
     def message_params
-      params.require(:message).permit(:texts, :user_news_id)
+      params.require(:message).permit(:text, :id)
     end
   
     def set_message

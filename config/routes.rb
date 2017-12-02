@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :user_list, only: [:index, :create, :destroy]
   resources :message, only: [:index, :destroy]
  
-  
+  post 'message', to: 'message#create', as:'message_create'
   post 'comment/:id', to: 'comment#create', as:'comment'
   post '/friends/:friend_id', to: 'friends#create', as: 'friend'
   delete '/friends/:friend_id', to: 'friends#destroy'
