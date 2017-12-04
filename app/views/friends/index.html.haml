@@ -1,0 +1,6 @@
+%h1
+  Friends
+- @friends.each do |friend|
+  %p 
+    = user_name(friend.friend_id)
+    = link_to 'Message', messages_path(friend.friend_id)

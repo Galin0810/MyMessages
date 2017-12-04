@@ -7,6 +7,7 @@ class User
   has_many :friends
   has_many :user_news
   has_many :comments
+  has_many :messages
  
 
   devise :database_authenticatable, :registerable,

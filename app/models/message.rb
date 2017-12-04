@@ -1,11 +1,9 @@
 class Message
   include Mongoid::Document
+  include Mongoid::Timestamps
 
-  has_and_belongs_to_many :friends 
+  belongs_to :user
 
-  field :text, type: String
-
-  def friend_name
-    self.friend.name
-  end
+  field :message, type: String
+  field :friend_id, type: String
 end

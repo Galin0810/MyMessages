@@ -1,30 +1,23 @@
 class MessageController < ApplicationController
-  before_action :set_message, only:[:create , :destroy]
-  
-    def index
-      @message = Message.where(readed: false).count
-    end
-  
-    def create
-      # friend.message.create(message_params)
-      redirect_to root_path
-    end
-  
-   
-    
-    def destroy
-      Message.find(params[:id]).destroy
-      flash[:success] = "User deleted"
-      redirect_to _url
-    end
-    
-    private 
-  
-    def message_params
-      params.require(:message).permit(:text, :id)
-    end
-  
-    def set_message
-      @message = current_user.message.find(params[:id])
-    end
+  before_action :set_friend
+
+  def index
+    @messages = Message.or(user_id: current_user.id, friend_id: @friend_id).or(user_id: @friend_id, friend_id: current_user.id.to_s)
+  end
+
+  def create
+    current_user.messages.create(message_params)
+    redirect_to messages_path(@friend_id)
+  end
+
+  private 
+
+  def set_friend
+    @friend_id = params[:friend_id]
+  end
+
+  def message_params
+    params.require(:message).permit(:message, :friend_id)
+  end
+
 end

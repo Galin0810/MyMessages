@@ -1,5 +1,6 @@
 class UserNews
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   has_many :comments, dependent: :destroy
 

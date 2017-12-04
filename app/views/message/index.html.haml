@@ -1,12 +1,14 @@
 %h1
-  Message
-= form_for :message, url: message_create_path do |f|
-  Text
-  = f.text_field :text
-  = f.submit
-- @message.each do |message|
+  = user_name(@friend_id)
+- @messages.each do |message|
   %p
-    .message
-      Text:
-      = message.text
-      = link_to 'Delete', message_path(message.id), method: :delete
+    .user_name
+      = message.user.name
+    .message_and_time
+      = message.message
+      |
+      = message.created_at
+= form_for :message, url: message_path(@friend_id) do |f|
+  = f.text_field :message
+  = f.hidden_field :friend_id, value: @friend_id
+  = f.submit
